@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF8
-    pageEncoding="UTF8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF8">
+<meta charset="UTF-8">
 <title>Connexion</title>
 </head>
 <body>
