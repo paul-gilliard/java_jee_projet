@@ -1,4 +1,4 @@
-package projet_jee_pal;
+package web;
 
 
 

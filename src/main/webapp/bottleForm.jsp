@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form id ="form" name="form" method="link" action="newBottle">
+	<form id ="form" name="form" method="link" action="NewBottle">
     <fieldset>
 
 	 <tr>
@@ -42,7 +42,7 @@
      
 
     	<td> 
-	    	<label for="couleur">Couleur :</label><br>
+	    	<label for="color">Couleur :</label><br>
 		    <input type="radio" name="color" id="color" value='Blanc'>
 		    <label for='white'>Blanc</label><br>
 		    <input type="radio" name="color" id="color" value='Rosé'>
