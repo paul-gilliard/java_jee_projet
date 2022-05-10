@@ -16,5 +16,9 @@ public class Catalog {
     	}
     	return instance;
 	}
+	
+	public void addBottle(Bottle bottle) {
+		bottles.add(bottle);
+	}
 
 }

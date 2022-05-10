@@ -9,6 +9,13 @@ public class Bottle {
 	int alcool;
 	int garde;
 	int rating;
+	static int idInc;
+	int id;
+	
+	public Bottle() {
+		this.id =idInc;
+		idInc++;
+	}
 	public String getBottle_name() {
 		return bottle_name;
 	}
