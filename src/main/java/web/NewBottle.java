@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.Bottle;
+import metier.Catalog;
 
 /**
  * Servlet implementation class NewBottle
@@ -17,6 +18,7 @@ import metier.Bottle;
 @WebServlet("/NewBottle")
 public class NewBottle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Catalog catalog;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -25,6 +27,13 @@ public class NewBottle extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    @Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+		catalog = Catalog.getInstance(); 
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
