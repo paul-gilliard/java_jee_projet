@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Catalog {
 	private static Catalog instance;
 	private ArrayList<Bottle> bottles = new ArrayList<>();
+	
 	public Catalog() {
 		getInstance();
 		
@@ -17,7 +18,7 @@ public class Catalog {
     	return instance;
 	}
 	
-	public void addBottle(Bottle bottle) {
+	public void addNewBottle(Bottle bottle) {
 		bottles.add(bottle);
 	}
 

@@ -1,5 +1,7 @@
 package metier;
 
+import java.util.Objects;
+
 public class Bottle {
 	String bottle_name;
 	String castle;
@@ -63,6 +65,24 @@ public class Bottle {
 	}
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(alcool, bottle_name, castle, color, garde, id, mill, rating, region);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bottle other = (Bottle) obj;
+		return alcool == other.alcool && Objects.equals(bottle_name, other.bottle_name)
+				&& Objects.equals(castle, other.castle) && Objects.equals(color, other.color) && garde == other.garde
+				&& id == other.id && mill == other.mill && rating == other.rating
+				&& Objects.equals(region, other.region);
 	}
 	@Override
 	public String toString() {

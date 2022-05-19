@@ -53,6 +53,9 @@ public class NewBottle extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println(bottle.toString());
 		
+		getServletConfig().getServletContext().getRequestDispatcher("/WEB-INF/jsp/Affichage.jsp").forward(request,response);
+
+		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
