@@ -38,5 +38,9 @@ public class Cave {
 		cave.get(user_id).add(bottle);
 		
 	}
+	
+	/*
+	public void addNewBottle(Bottle bottle)
+	*/ //besoin de récup l'ID utilisateur depuis le formulaire
 
 }

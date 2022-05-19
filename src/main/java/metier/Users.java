@@ -3,6 +3,8 @@ package metier;
 public class Users {
 	String pseudo;
 	String name;
+	String surname;
+	String password;
 	static int idInc;
 	int id;
 
@@ -41,6 +43,17 @@ public class Users {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+		
 	}
 	
 	

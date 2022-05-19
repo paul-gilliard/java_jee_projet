@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import metier.Bottle;
-import metier.Catalog;
+import metier.*;
+
 
 /**
  * Servlet implementation class NewBottle
@@ -19,6 +19,7 @@ import metier.Catalog;
 public class NewBottle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Catalog catalog;
+	private Cave cave;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,7 +40,8 @@ public class NewBottle extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		PrintWriter out = response.getWriter();
 		Bottle bottle = new Bottle();
 		bottle.setBottle_name(request.getParameter("bottle_name"));
 		bottle.setCastle(request.getParameter("castle"));
@@ -50,7 +52,15 @@ public class NewBottle extends HttpServlet {
 		bottle.setGarde(Integer.parseInt(request.getParameter("garde")));
 		bottle.setRating(Integer.parseInt(request.getParameter("rating")));
 		
-		PrintWriter out = response.getWriter();
+		int user_id = Integer.parseInt(request.getParameter("user_id"));
+		
+		
+		if(bottle.equals(bottle)==true){
+			out.println("Cette bouteille existe déjà ! ");
+		}else {
+			catalog.addNewBottle(user_id,bottle);
+			
+		}
 		out.println(bottle.toString());
 		
 		getServletConfig().getServletContext().getRequestDispatcher("/WEB-INF/jsp/Affichage.jsp").forward(request,response);

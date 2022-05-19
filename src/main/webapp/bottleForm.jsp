@@ -7,9 +7,12 @@
 <title>Ajouter une bouteille</title>
 </head>
 <body>
+<x:user doc="users.xml" var="doc" scope="application"/>
+
 
 	<form id ="form" name="form" method="link" action="NewBottle">
     <fieldset>
+     <input type = "hidden" name ="user_id" id="user_id">value=" <x:out select="$doc/users/user/id"/>"/>
 
 	 <tr>
 		<td> <label for="title">Nom  :</label><br>
@@ -19,7 +22,7 @@
 	    <td><label for="castle">Château</label>
     <input for="textarea" name="castle" id="castle"><br> </td>
 	    
-	    <td><label for="title2">Millésime :</label>
+	    <td><label for="millesime">Millésime :</label>
     <input type="number" id="mill" name="mill" min="1995" max="2022"> <br>
      </td>
     
@@ -55,12 +58,12 @@
 
  		<td> 
 		  <label for="alcool">Teneur en alcool :</label>
-		  <input for="text" id ="alcool" name="alcool"><br>
+		  <input type="text" id ="alcool" name="alcool"><br>
 		</td>
         
   		<td> 
 	        <label for="garde">Niveau de garde :</label>
-	        <input for="text" id="garde" name="garde">
+	        <input type="text" id="garde" name="garde">
             <br>
         </td>
         

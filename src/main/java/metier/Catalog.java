@@ -18,8 +18,9 @@ public class Catalog {
     	return instance;
 	}
 	
-	public void addNewBottle(Bottle bottle) {
+	public void addNewBottle(int user_id,Bottle bottle) {
 		bottles.add(bottle);
+		//Cave.addNewBottle(user_id,bottle);
 	}
 
 }
