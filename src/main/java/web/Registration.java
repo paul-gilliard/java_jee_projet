@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 import metier.Catalog;
 import metier.Users;
+import xmlGenerator.GenerateUserXml;
 
 /**
  * Servlet implementation class Registration
@@ -45,7 +48,16 @@ public class Registration extends HttpServlet {
 		user.setSurname(request.getParameter("surname"));
 		user.setPseudo(request.getParameter("pseudo"));
 		user.setPassword(request.getParameter("password"));
-		out.println(user.toString());
+		//out.println(user.toString());
+		
+	    GenerateUserXml gen = new GenerateUserXml();
+	
+	    gen.generateFile(user);
+		getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+		 
+	    
+	    	 
+	     
 
 	}
 

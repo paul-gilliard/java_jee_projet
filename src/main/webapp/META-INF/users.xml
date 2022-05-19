@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE users [
+<!ELEMENT users (user*)>
+<!ELEMENT user (pseudo, name, surname, password) >
+
+<!ELEMENT pseudo (#PCDATA) >
+<!ELEMENT name (#PCDATA) >
+<!ELEMENT surname (#PCDATA) >
+<!ELEMENT password (#PCDATA) >
+
+]>
+
+<users>
+
+	<user>
+		<pseudo></pseudo>
+		<name></name>
+		<surname></surname>
+		<password></password>
+	</user>
+
+</users>

@@ -10,7 +10,7 @@
 <x:user doc="users.xml" var="doc" scope="application"/>
 
 
-	<form id ="form" name="form" method="link" action="Registration">
+	<form id ="form" name="form" method="post" action="Registration">
     <fieldset>
  
 	 <tr>

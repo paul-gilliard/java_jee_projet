@@ -2,6 +2,16 @@ package metier;
 
 public class Users {
 	String pseudo;
+	public String getSurname() {
+		return surname;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
 	String name;
 	String surname;
 	String password;
