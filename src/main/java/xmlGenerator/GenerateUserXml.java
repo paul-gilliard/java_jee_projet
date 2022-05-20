@@ -2,6 +2,9 @@ package xmlGenerator;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
+import java.nio.file.Paths;
+import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -26,8 +29,9 @@ public class GenerateUserXml {
 	 public void generateFile(Users user) throws  IOException{
          
 		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+		
 		 String path = System.getProperty("user.dir");
-		 path = path+"/git/projet_jee_pal/src/main/webapp/XML/user.xml";
+		 path = path+"/git/projet_jee_pal/src/main/webapp/XML/user.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 		 File f = new File(path);
 		 if(f.exists() && !f.isDirectory()) {
 			 
@@ -146,4 +150,55 @@ public class GenerateUserXml {
 	   // return "Compte cr�e avec succ�s !";
 	    }
 
+	 public boolean isMatchedPseudoPassword(String pseudo,String inputPassword) { // test si un password est relier à un pseudo, renvoie true si oui, false sinon
+		 boolean match = false;
+		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+			
+		 String path = System.getProperty("user.dir");
+		 path = path+"/src/main/webapp/XML/user.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+			 
+			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			 Node nodeToExplore = null;
+			 try 
+			 {
+				 
+			   final DocumentBuilder builder = factory.newDocumentBuilder();
+			   final Document document= builder.parse(path);
+			   final Node pseudoNode = document.getElementById(pseudo);
+			   
+			   final Element racine = document.getDocumentElement();
+			   //System.out.println(racine.getNodeName());
+			   final NodeList racineNoeuds = racine.getChildNodes();
+			   
+			   
+			   final int nbRacineNoeuds = racineNoeuds.getLength();
+			   //System.out.println(nbRacineNoeuds);
+			   
+			   for (int i = 0; i<nbRacineNoeuds; i++) 
+			   {
+			     //System.out.println(racineNoeuds.item(i).getNodeName());
+			     if (racineNoeuds.item(i).getNodeName() == pseudo) {
+			    	 
+			    	 final Element user = (Element) racineNoeuds.item(i);
+			    	    //System.out.println(user.getNodeName());
+			    	    Node userNode =  (Node) user.getChildNodes();
+			    	    //System.out.println("password : " + userNode.getLastChild());
+			    	    Node password = userNode.getLastChild();
+			    	    //System.out.println(password.getTextContent() + "____" + inputPassword);
+			    	    if (password.getTextContent().equalsIgnoreCase(inputPassword)) {
+			    	    	match = true;
+			    	    }
+			     }
+			   }
+
+			//System.out.println("here" + nodeToExplore);
+			   
+			 } catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			 
+			 return match;
+	 }
 }
+	 
+
