@@ -1,0 +1,232 @@
+* {
+  font-family: poppins;
+}
+
+.home {
+    font-weight: 300;
+    font-size: 200%;
+    color: white;
+    margin: 3%;
+}
+
+label {
+	display: block; 
+	width: 200px;
+	margin:2%;
+}
+
+table {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+td {
+    color: #a71d31;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 5%;
+	font-size: large;
+	font-weight: 200;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+a:hover{
+    color: #a71d31;
+    background-color: white;
+}
+
+nav {
+    display: flex;
+    justify-content:space-around; 
+    align-items: center;
+    font-weight: 500;
+    font-size: 150%;
+    color: white;
+}
+
+nav li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    margin: 3 px;
+}
+
+h1 {
+    background: -webkit-linear-gradient(315deg, #a71d31 74%,#3f0d12 0%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top : 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 4%;
+}
+
+.logged-user {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 2%;
+font-size: medium;
+font-weight: 400;
+}
+
+.logged-user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 2%;
+}
+
+.section-application{
+    z-index: 0;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    background: white;
+    border-radius: 40px;
+    padding-top : 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 4%;
+     box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+}
+
+.cards-list {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;    
+}
+
+.card-wine {
+  z-index: 2;
+  margin: 20px;
+  width: 150px;
+  height: 300px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card-user {
+    z-index: 2;
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 180px;
+    box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+      -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+.card-wine > .card_description {
+  position: relative;
+  z-index: 3;
+  padding-top: 20%;
+  width: 150px;
+  height: 90%;
+  border-radius: 40px;
+  text-align: center;
+  font-weight: medium;
+  font-size: 70%;
+  margin-top: -200%;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(rgb(0, 0, 0, 0.85) 25%, rgba(0, 0, 0, 0) 60%);
+}
+
+.card-user > .card_description {
+    display: flex;
+    justify-content: center;
+    background: -webkit-linear-gradient(315deg, #a71d31 74%,#3f0d12 0%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: larger;
+    margin: 10px;
+  }
+
+.card_description_minor {
+  visibility: collapse;
+}
+
+.card-user > .card_image {
+    position: relative;
+    z-index: 2;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+}
+
+.card-user > .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+.card-wine > .card_image {
+  position: relative;
+  z-index: 2;
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card-wine > .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.card-wine:hover, .card-user:hover {
+  transform: scale(1.2, 1.2);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+
+.card-wine:hover .card_description_minor {
+  visibility: visible;
+}
+
+.card-wine:hover .card_description {
+  background: linear-gradient(rgb(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0));
+}
+
+@media all and (max-width: 1000px) {
+  .card-list {
+    flex-direction: column;
+  }
+  
+  nav {
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+  }
+}
+
+body {
+    background: #a71d31;
+}
