@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="javax.xml.parsers.DocumentBuilderFactory,
+javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +11,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css_cards.css">
-    <title>test</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Poppins"
+	rel="stylesheet">
+    <title>Ma cave</title>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@ page import="metier.Users" %>
+    <%@ page import="metier.Cave" %>
+    
 </head>
 
 <body>
+
+
 
     <nav class="menu">
         <div class ="home">Dyoni</div>
@@ -20,7 +34,7 @@
         </ul>
         <div class = "logged-user">
             <img src="https://media1.giphy.com/media/hryis7A55UXZNCUTNA/giphy.gif">
-            <span class ="name-logged-user">Alexandre DE BARROS</span>
+            <span class ="name-logged-user">${user.getName()} ${user.getSurname()} </span>
         </div>
     </nav>
 
@@ -28,6 +42,15 @@
     <h1>Ma cave</h1>
     <div class="cards-list wines">
 
+            <tr>      
+                <td>${cave.getCave(i).getBottle_name()}</td>
+                <td>${cave.getCave(i).getCastle()}</td>
+                <td>${allFestivals.get(i).getStartDate()}</td>
+                <td>${allFestivals.get(i).getEndDate()}</td>
+                <td>${allFestivals.get(i).getURL()}</td>  
+            </tr>
+       
+       
         <div class="card-wine 1">
             <div class="card_image">
                 <img src="https://bordeaux-rive-droite.com/wp-content/uploads/2015/03/La-grave-2011-457x800.jpg" />
@@ -35,35 +58,35 @@
             <div class="card_description">
                 <div class="card_description_major">
                     <div class="bottle_name">
-                        <p>bottle_name</p>
+                        <p>${cave.getCave(i).getBottle_name()}</p>
                     </div>
                     <div class="castle">
-                        <p>castle</p>
+                        <p>${cave.getCave(i).getCastle()}</p>
                     </div>
                     <div class="mill">
-                        <p>mill</p>
+                        <p>${cave.getCave(i).getMill()}</p>
                     </div>
                 </div>
                 <div class="card_description_minor">
                     <div class="region">
-                        <p>region</p>
+                        <p>${cave.getCave(i).getRegion()}</p>
                     </div>
                     <div class="color">
-                        <p>color</p>
+                        <p>${cave.getCave(i).getColor()}</p>
                     </div>
                     <div class="alcool">
-                        <p>alcool</p>
+                        <p>${cave.getCave(i).getAlcool()}</p>
                     </div>
                     <div class="garde">
-                        <p>garde</p>
+                        <p>${cave.getCave(i).getGarde()}</p>
                     </div>
                     <div class="rating">
-                        <p>rating</p>
+                        <p>${cave.getCave(i).getRating()}</p>
                     </div>
                 </div>
             </div>
         </div>
-
+		
         <div class="card-wine 2">
             <div class="card_image">
                 <img
@@ -108,31 +131,17 @@
             <div class="card_description">
                 <div class="card_description_major">
                     <div class="bottle_name">
-                        <p>bottle_name</p>
+                        <p>Ajouter une bouteille</p>
                     </div>
-                    <div class="castle">
-                        <p>castle</p>
-                    </div>
-                    <div class="mill">
-                        <p>mill</p>
-                    </div>
+                    
                 </div>
                 <div class="card_description_minor">
-                    <div class="region">
-                        <p>region</p>
-                    </div>
-                    <div class="color">
-                        <p>color</p>
-                    </div>
-                    <div class="alcool">
-                        <p>alcool</p>
-                    </div>
-                    <div class="garde">
-                        <p>garde</p>
-                    </div>
-                    <div class="rating">
-                        <p>rating</p>
-                    </div>
+                    
+                    <div class="button__holder">
+    				<button class="plus"><a href="bottleForm.jsp"></a></button>
+					</div>
+                     
+    
                 </div>
             </div>
         </div>

@@ -2,33 +2,22 @@ package metier;
 
 public class Users {
 	String pseudo;
-	public String getSurname() {
-		return surname;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
 	String name;
 	String surname;
 	String password;
 	static int idInc;
 	int id;
+	Cave cave;
 
-	
 	public Users() {
 		this.id = idInc;
 		idInc++;
-		Cave cave = new Cave(this.getId());
+		cave = new Cave(this.getId());
 		}
 	
 	
-	public void addNewBottle() {
-		
-		
+	public Cave getCave() {
+		return this.cave;
 	}
 
 	public String getPseudo() {
@@ -64,6 +53,14 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 		
+	}
+	public String getSurname() {
+		return surname;
+	}
+
+
+	public String getPassword() {
+		return password;
 	}
 	
 	

@@ -2,9 +2,6 @@ package xmlGenerator;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.StringReader;
-import java.nio.file.Paths;
-import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -24,7 +21,7 @@ import org.xml.sax.SAXException;
 
 import metier.Users;
 
-public class GenerateUserXml {
+public class GenerateCaveXml {
 	
 	 public void generateFile(Users user) throws  IOException{
          
@@ -147,15 +144,15 @@ public class GenerateUserXml {
 		 }
 		  
 	      
-	   // return "Compte crï¿½e avec succï¿½s !";
+	   // return "Compte créee avec succés !";
 	    }
 
-	 public boolean isMatchedPseudoPassword(String pseudo,String inputPassword) { // test si un password est relier Ã  un pseudo, renvoie true si oui, false sinon
+	 public static boolean isMatchedPseudoPassword(String pseudo,String inputPassword) { // test si un password est relier à un pseudo, renvoie true si oui, false sinon
 		 boolean match = false;
-		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+		 System.out.println("Present Project Directory : "+ System.getProperty("cave.dir"));
 			
-		 String path = System.getProperty("user.dir");
-		 path = path+"/src/main/webapp/XML/user.xml"; // POtentiellement Ã  adapter pour taffer Lisa, comportement chelou
+		 String path = System.getProperty("cave.dir");
+		 path = path+"/src/main/webapp/XML/cave.xml"; // Potentiellement à  adapter pour taffer Lisa, comportement chelou
 			 
 			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			 Node nodeToExplore = null;

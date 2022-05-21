@@ -53,6 +53,8 @@ public class Registration extends HttpServlet {
 	    GenerateUserXml gen = new GenerateUserXml();
 	
 	    gen.generateFile(user);
+	    request.setAttribute("user", user);
+	    request.setAttribute("cave", user.getCave());
 		getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 		 
 	    

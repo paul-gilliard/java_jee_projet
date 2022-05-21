@@ -39,6 +39,10 @@ public class Cave {
 		
 	}
 	
+	public int getSize() {
+		return cave.size();
+	}
+	
 	/*
 	public void addNewBottle(Bottle bottle)
 	*/ //besoin de récup l'ID utilisateur depuis le formulaire
