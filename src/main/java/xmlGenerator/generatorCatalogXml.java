@@ -318,10 +318,11 @@ public class generatorCatalogXml {
 	}
 	
 	
+	@SuppressWarnings("finally")
 	public Integer idIncrementedBottle(){
 		
 		System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
-		 Integer id_bouteille = null;
+		 Integer id_bouteille = 0;
 		 String path = System.getProperty("user.dir");
 		 path = path+"/src/main/webapp/XML/catalog.xml";
 		 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -342,10 +343,13 @@ public class generatorCatalogXml {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			return id_bouteille;
 		}
 		   
+		
 		  
-		return id_bouteille;
+		
 	}
 
 }

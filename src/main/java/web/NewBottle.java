@@ -22,7 +22,7 @@ public class NewBottle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Catalog catalog;
 	private Cave cave;
-	private generatorCatalogXml cat;
+	private generatorCatalogXml catalogxml;
 	private GenerateUserXml userxml;
        
     /**
@@ -36,7 +36,7 @@ public class NewBottle extends HttpServlet {
     @Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
-    	cat = new generatorCatalogXml();
+    	catalogxml = new generatorCatalogXml();
    		userxml = new GenerateUserXml();
 		super.init();
 		catalog = Catalog.getInstance(); 
@@ -67,8 +67,14 @@ public class NewBottle extends HttpServlet {
 		user.setSurname(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(2).toString());
 		user.setPseudo(request.getParameter("pseudo"));
 		user.setPassword(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(3).toString());
+		user.getCave().addNewBottleFromList(user.getId(), bottle);
+		catalog.addNewBottle(user.getId(), bottle);
 		System.out.println(user.toString());
+		
 		request.setAttribute("user", user);
+		
+		System.out.println(user.getCave().getSize());
+		
 		
 		/*int user_id = Integer.parseInt(request.getParameter("user_id"));
 		

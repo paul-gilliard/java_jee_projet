@@ -28,9 +28,9 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
     <nav class="menu">
         <div class ="home">Dyoni</div>
         <ul>
-          <li><a href="#macave">Ma Cave</a></li>
+          <li><a href="?page=macave">Ma Cave</a></li>
           <li><a href="#lacom">La Communauté</a></li>
-          <li><a href="#dyoni">La Dyoni Cave</a></li>
+          <li><a href="CatalogCheck" accesskey="1" title="">La Dyoni Cave</a></li>
         </ul>
         <div class = "logged-user">
             <img src="https://media1.giphy.com/media/hryis7A55UXZNCUTNA/giphy.gif">
@@ -38,12 +38,12 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
         </div>
     </nav>
 
-    <div class="section-application">
+    
+<div class="section-application">
     <h1>Ma cave</h1>
     <div class="cards-list wines">
 
  
-       
       
         <div class="card-wine 2">
             <div class="card_image">
@@ -166,9 +166,8 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
         </div>
     </div>
     </div>
-
-
+    
+    
 </body>
-
-
 </html>
+    

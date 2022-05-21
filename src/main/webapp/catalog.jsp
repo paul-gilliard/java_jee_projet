@@ -5,7 +5,6 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
 %>
 
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -15,12 +14,13 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
     <link href="style.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Poppins"
 	rel="stylesheet">
-    <title>La Dyoni cave</title>
+    <title>Ma cave</title>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-    <%@ page import="metier.Catalog" %>
-        <jsp:useBean id="user" type="metier.Users" scope="request" />
- 
-    
+    <%@ page import="metier.Users" %>
+    <%@ page import="xmlGenerator.generatorCatalogXml" %>
+    <jsp:useBean id="user" type="metier.Users" scope="request" />
+     <jsp:useBean id="catalog" type="xmlGenerator.generatorCatalogXml" scope="request" />
+   
 </head>
 
 <body>
@@ -30,8 +30,8 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
     <nav class="menu">
         <div class ="home">Dyoni</div>
         <ul>
-          <li><a href="index.jsp">Ma Cave</a></li>
-          <li><a href="#lacomu">La Communauté</a></li>
+          <li><a href="?page=macave">Ma Cave</a></li>
+          <li><a href="#lacom">La Communauté</a></li>
           <li><a href="#">La Dyoni Cave</a></li>
         </ul>
         <div class = "logged-user">
@@ -40,8 +40,9 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
         </div>
     </nav>
 
-    <div class="section-application">
-    <h1>Ma cave</h1>
+    
+    <h1>La Dyoni cave</h1>
+    
     <div class="cards-list wines">
 	<% for(int i = 0; i < user.getCave().getSize(); i+=1) { %>
         <div class="card-wine 1">

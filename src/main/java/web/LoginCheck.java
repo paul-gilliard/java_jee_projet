@@ -23,7 +23,6 @@ import xmlGenerator.generatorCatalogXml;
 public class LoginCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private generatorCatalogXml catalog;
 	private GenerateUserXml userxml;
        
     /**
@@ -36,13 +35,14 @@ public class LoginCheck extends HttpServlet {
 
     @Override
    	public void init() throws ServletException {
-    	catalog = new generatorCatalogXml();
+    	//catalog = new generatorCatalogXml();
    		userxml = new GenerateUserXml();
    		super.init();
    		
    	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
@@ -57,8 +57,9 @@ public class LoginCheck extends HttpServlet {
 		user.setSurname(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(2).toString());
 		user.setPseudo(request.getParameter("pseudo"));
 		user.setPassword(request.getParameter("password"));
+		
 		System.out.println(user.toString());
-		request.setAttribute("catalog", catalog);
+		//request.setAttribute("catalog", catalog);
 		request.setAttribute("user", user);
 		getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 			 

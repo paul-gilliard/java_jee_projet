@@ -264,6 +264,40 @@ public class GenerateUserXml {
 			 return allBottle;
 		 
 	}
+	
+
+public Integer idIncrementedUser(){
+		
+		System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+		 Integer id_user = 0;
+		 String path = System.getProperty("user.dir");
+		 path = path+"/src/main/webapp/XML/user.xml";
+		 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		 DocumentBuilder builder;
+		try {
+			builder = factory.newDocumentBuilder();
+			final Document document= builder.parse(path);
+			final Element racine = document.getDocumentElement();
+			System.out.println(racine.getNodeName());
+			final NodeList racineNoeuds = racine.getChildNodes();
+			 id_user = racineNoeuds.getLength();
+			 System.out.println("dans la fonction" + id_user);
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			return id_user;
+		}
+		   
+		  
+		
+	}
 }
 	 
 

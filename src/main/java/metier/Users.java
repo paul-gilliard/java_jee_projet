@@ -1,5 +1,7 @@
 package metier;
 
+import xmlGenerator.GenerateUserXml;
+
 public class Users {
 	String pseudo;
 	String name;
@@ -10,8 +12,13 @@ public class Users {
 	Cave cave;
 
 	public Users() {
-		this.id = idInc;
-		idInc++;
+		GenerateUserXml gen = new GenerateUserXml();
+		int goodId = gen.idIncrementedUser();
+		if(goodId == 0) {
+			this.id =1;
+		} else {
+			this.id = goodId+1;
+		}
 		cave = new Cave(this.getId());
 		}
 	public Users(String pseudo) {
