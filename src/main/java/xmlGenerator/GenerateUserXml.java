@@ -52,7 +52,7 @@ public class GenerateUserXml {
 			   int id_user = racineNoeuds.getLength();
 			   String id_user_string = String.valueOf(id_user);
 			   Element userId = document.createElement("id_user");
-		        userId.setTextContent(id_user_string);;
+		        userId.setTextContent(id_user_string);
 		        pseudo.appendChild(userId);
 		        
 			   Element name = document.createElement("name");

@@ -1,6 +1,7 @@
 package metier;
 
 import java.util.Objects;
+import xmlGenerator.generatorCatalogXml;
 
 public class Bottle {
 	String bottle_name;
@@ -11,12 +12,19 @@ public class Bottle {
 	int alcool;
 	int garde;
 	int rating;
-	static int idInc;
 	int id;
 	
-	public Bottle() {
-		this.id =idInc;
-		idInc++;
+	public Bottle(String bottle_name,String castle,int mill,String region,String color,int alcool,int garde,int rating) {
+		this.bottle_name = bottle_name;
+		this.alcool =alcool;
+		this.castle=castle;
+		this.mill = mill;
+		this.region=region;
+		this.color=color;
+		this.garde=garde;
+		this.rating=rating;
+		generatorCatalogXml gen = new generatorCatalogXml();
+		this.id =gen.idIncrementedBottle();
 	}
 	public String getBottle_name() {
 		return bottle_name;
@@ -65,6 +73,10 @@ public class Bottle {
 	}
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+	
+	public int getId() {
+		return this.id;
 	}
 	@Override
 	public int hashCode() {
