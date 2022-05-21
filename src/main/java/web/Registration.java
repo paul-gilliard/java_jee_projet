@@ -13,7 +13,6 @@ import javax.xml.transform.TransformerException;
 
 import metier.Catalog;
 import metier.Users;
-import xmlGenerator.GenerateCaveXml;
 import xmlGenerator.GenerateUserXml;
 
 /**
@@ -44,7 +43,6 @@ public class Registration extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		Users user = new Users();
-		System.out.println(user.getId());
 		
 		user.setName(request.getParameter("name"));
 		user.setSurname(request.getParameter("surname"));
@@ -53,13 +51,11 @@ public class Registration extends HttpServlet {
 		//out.println(user.toString());
 		
 	    GenerateUserXml gen = new GenerateUserXml();
-	    GenerateCaveXml genCave = new GenerateCaveXml();
 	
-	    genCave.generateFile(user.getId());
 	    gen.generateFile(user);
-	   // request.setAttribute("user", user);
-	    //request.setAttribute("cave", user.getCave());
-		//getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+	    request.setAttribute("user", user);
+	    request.setAttribute("cave", user.getCave());
+		getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 		 
 	    
 	    	 

@@ -24,13 +24,7 @@ public class Bottle {
 		this.garde=garde;
 		this.rating=rating;
 		generatorCatalogXml gen = new generatorCatalogXml();
-		int goodId = gen.idIncrementedBottle();
-		if(goodId == 0) {
-			this.id =1;
-		} else {
-			this.id = goodId;
-		}
-		
+		this.id =1;
 	}
 	public String getBottle_name() {
 		return bottle_name;
