@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -199,6 +202,68 @@ public class GenerateUserXml {
 			 
 			 return match;
 	 }
+
+
+	public HashMap<String, List> getOneUserFromByPseudo(String Pseudo) { // renvoie une hashmap <b+id_bouteille,list<attributs_bouteille>> de l'idBOuteille en paramètre (sous la form b+id_bouteille)
+		 boolean match = false;
+		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+			
+		 String path = System.getProperty("user.dir");
+		 path = path+"/src/main/webapp/XML/user.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+			 
+			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			 Node nodeToExplore = null;
+			 HashMap<String, List> allBottle = new HashMap<String, List>();
+			 
+			 try 
+			 {
+				 
+			   final DocumentBuilder builder = factory.newDocumentBuilder();
+			   final Document document= builder.parse(path);
+			   
+			   final Element racine = document.getDocumentElement();
+			   //System.out.println(racine.getNodeName());
+			   final NodeList racineNoeuds = racine.getChildNodes();
+			   
+			   
+			   final int nbRacineNoeuds = racineNoeuds.getLength();
+			   //System.out.println(nbRacineNoeuds);
+			   
+			   for (int i = 0; i<nbRacineNoeuds; i++) 
+			   {
+			     //System.out.println(racineNoeuds.item(i).getNodeName());
+			     List listElement = new ArrayList<String>();
+			    	 
+			    	 final Element bottle = (Element) racineNoeuds.item(i);
+			    	    //System.out.println(user.getNodeName());
+			    	    Node bottleNode =  (Node) bottle.getChildNodes();
+			    	    
+			    	    
+			    	    //System.out.println("password : " + userNode.getLastChild());
+			    	    NodeList elementBottle =  bottleNode.getChildNodes();
+			    	    final int nbElementBottle = elementBottle.getLength();
+			    	    for (int j = 0; j<nbElementBottle; j++) 
+						   {
+			    	    	final Node bottleElem = (Node) elementBottle.item(j);
+			    	    	listElement.add(bottleElem.getTextContent());
+						   }
+			    	    
+			    	    if(bottleNode.getNodeName().equalsIgnoreCase(Pseudo)) {
+			    	    allBottle.put(bottleNode.getNodeName(), listElement);
+			    	    }
+			    	    
+			    	    
+			    	    //System.out.println(password.getTextContent() + "____" + inputPassword);
+			    	   
+			     
+			   }
+			 } catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+	
+			 return allBottle;
+		 
+	}
 }
 	 
 
