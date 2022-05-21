@@ -10,7 +10,7 @@
 <title>Créer un compte</title>
 </head>
 <body>
-	<x:user doc="users.xml" var="doc" scope="application" />
+
 	<%@include file="logo.jsp"%>
 	<div class="section-application">
 		<h1>Créer un compte</h1>

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import metier.Catalog;
 import metier.Users;
 import xmlGenerator.GenerateUserXml;
+import xmlGenerator.generatorCatalogXml;
 
 /**
  * Servlet implementation class LoginCheck
@@ -20,6 +22,9 @@ import xmlGenerator.GenerateUserXml;
 @WebServlet("/LoginCheck")
 public class LoginCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private generatorCatalogXml catalog;
+	private GenerateUserXml userxml;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,6 +34,13 @@ public class LoginCheck extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    @Override
+   	public void init() throws ServletException {
+    	catalog = new generatorCatalogXml();
+   		userxml = new GenerateUserXml();
+   		super.init();
+   		
+   	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -39,13 +51,15 @@ public class LoginCheck extends HttpServlet {
 		if(!GenerateUserXml.isMatchedPseudoPassword(pseudo,password)) {
 			out.println("Try again");
 		}
-		Users user = new Users();
-		user.setName(request.getParameter("name"));
-		user.setSurname(request.getParameter("surname"));
+		Users user = new Users(pseudo);
+		user.setId(Integer.parseInt(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(0).toString()));
+		user.setName(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(1).toString());
+		user.setSurname(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(2).toString());
 		user.setPseudo(request.getParameter("pseudo"));
 		user.setPassword(request.getParameter("password"));
-		
-		//request.setAttribute("user", user);   
+		System.out.println(user.toString());
+		request.setAttribute("catalog", catalog);
+		request.setAttribute("user", user);
 		getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 			 
 		

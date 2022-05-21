@@ -14,9 +14,9 @@
 			<table>
 				<tr>
 					<td>Identifiant</td>
-					<td><input type="text" name="username"></td>
+					<td><input type="text" name="pseudo" id="pseudo"></td>
 					<td>Mot de passe</td>
-					<td><input type="password" name="password"></td>
+					<td><input type="password" name="password" id="password"></td>
 					<td><input type="submit" value="Connexion"></td>
 				</tr>
 			</table>

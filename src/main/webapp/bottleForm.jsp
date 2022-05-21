@@ -4,16 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Poppins"
+	rel="stylesheet">
 <title>Ajouter une bouteille</title>
+
+   <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@ page import="metier.Users" %>
+   
 </head>
 <body>
-<x:user doc="users.xml" var="doc" scope="application"/>
+
 
 
 	<form id ="form" name="form" method="link" action="NewBottle">
     <fieldset>
-     <input type = "hidden" name ="user_id" id="user_id">value=" <x:out select="$doc/users/user/id"/>"/>
 
+	<input type=hidden value=${param.pseudo} name="pseudo" id="pseudo"> 
 	 <tr>
 		<td> <label for="title">Nom  :</label><br>
 	    <input type="text" name="bottle_name" id="bottle_name"> <br>

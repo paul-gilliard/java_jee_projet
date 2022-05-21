@@ -14,12 +14,17 @@ public class Users {
 		idInc++;
 		cave = new Cave(this.getId());
 		}
+	public Users(String pseudo) {
+		this.pseudo=pseudo;
 	
+		
+	}
 	
 	public Cave getCave() {
 		return this.cave;
 	}
 
+	
 	public String getPseudo() {
 		return pseudo;
 	}
@@ -61,6 +66,16 @@ public class Users {
 
 	public String getPassword() {
 		return password;
+	}
+	
+	
+	
+	
+
+	@Override
+	public String toString() {
+		return "Users [pseudo=" + pseudo + ", name=" + name + ", surname=" + surname + ", password=" + password
+				+ ", id=" + id + ", cave=" + cave + "]";
 	}
 	
 	

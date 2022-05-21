@@ -35,7 +35,7 @@ public class generatorCatalogXml {
 		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 		
 		 String path = System.getProperty("user.dir");
-		 path = "C:\\Users\\5iem Hokage\\git\\java_jee_projet\\src\\main\\webapp\\XML"; // Potentiellement à adapter pour taffer Lisa, comportement chelou
+		 path = "C:\\Users\\5iem Hokage\\git\\java_jee_projet\\src\\main\\webapp\\XML/catalog.xml"; // Potentiellement à adapter pour taffer Lisa, comportement chelou
 		 File f = new File(path);
 		 if(f.exists() && !f.isDirectory()) {
 			 

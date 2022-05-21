@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.*;
+import xmlGenerator.GenerateUserXml;
 import xmlGenerator.generatorCatalogXml;
 
 
@@ -21,6 +22,8 @@ public class NewBottle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Catalog catalog;
 	private Cave cave;
+	private generatorCatalogXml cat;
+	private GenerateUserXml userxml;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,6 +36,8 @@ public class NewBottle extends HttpServlet {
     @Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
+    	cat = new generatorCatalogXml();
+   		userxml = new GenerateUserXml();
 		super.init();
 		catalog = Catalog.getInstance(); 
 	}
@@ -54,6 +59,16 @@ public class NewBottle extends HttpServlet {
 		bottle.setAlcool(Integer.parseInt(request.getParameter("alcool")));
 		bottle.setGarde(Integer.parseInt(request.getParameter("garde")));
 		bottle.setRating(Integer.parseInt(request.getParameter("rating")));
+		String pseudo = request.getParameter("pseudo");
+		
+		Users user = new Users(pseudo);
+		user.setId(Integer.parseInt(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(0).toString()));
+		user.setName(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(1).toString());
+		user.setSurname(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(2).toString());
+		user.setPseudo(request.getParameter("pseudo"));
+		user.setPassword(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(3).toString());
+		System.out.println(user.toString());
+		request.setAttribute("user", user);
 		
 		/*int user_id = Integer.parseInt(request.getParameter("user_id"));
 		
