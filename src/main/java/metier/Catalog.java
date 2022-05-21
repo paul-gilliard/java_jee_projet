@@ -6,10 +6,7 @@ public class Catalog {
 	private static Catalog instance;
 	private ArrayList<Bottle> bottles = new ArrayList<>();
 	
-	public Catalog() {
-		getInstance();
-		
-	}
+
 
 	public static Catalog getInstance() {
 		if ( instance == null) {

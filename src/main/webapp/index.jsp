@@ -5,6 +5,7 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
 %>
 
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 
 <head>
@@ -208,5 +209,6 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
 
 
 </body>
+
 
 </html>

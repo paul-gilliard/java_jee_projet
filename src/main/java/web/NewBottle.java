@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.*;
+import xmlGenerator.generatorCatalogXml;
 
 
 /**
@@ -40,9 +41,11 @@ public class NewBottle extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("ici");
 
 		PrintWriter out = response.getWriter();
-		Bottle bottle = new Bottle();
+		Bottle bottle = new Bottle("a", "a", 0, "a", "a", 0, 0, 0);
 		bottle.setBottle_name(request.getParameter("bottle_name"));
 		bottle.setCastle(request.getParameter("castle"));
 		bottle.setMill(Integer.parseInt(request.getParameter("mill")));
@@ -52,19 +55,21 @@ public class NewBottle extends HttpServlet {
 		bottle.setGarde(Integer.parseInt(request.getParameter("garde")));
 		bottle.setRating(Integer.parseInt(request.getParameter("rating")));
 		
-		int user_id = Integer.parseInt(request.getParameter("user_id"));
+		/*int user_id = Integer.parseInt(request.getParameter("user_id"));
 		
 		
 		if(bottle.equals(bottle)==true){
-			out.println("Cette bouteille existe déjà ! ");
+			out.println("Cette bouteille existe dï¿½jï¿½ ! ");
 		}else {
 			catalog.addNewBottle(user_id,bottle);
 			
 		}
-		out.println(bottle.toString());
+		out.println(bottle.toString());*/
 		
-		getServletConfig().getServletContext().getRequestDispatcher("/WEB-INF/jsp/Affichage.jsp").forward(request,response);
+		getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 
+		generatorCatalogXml gen = new generatorCatalogXml();
+		gen.generateFile(bottle);
 		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}

@@ -39,6 +39,11 @@ public class LoginCheck extends HttpServlet {
 		if(!GenerateUserXml.isMatchedPseudoPassword(pseudo,password)) {
 			out.println("Try again");
 		}
+		Users user = new Users();
+		user.setName(request.getParameter("name"));
+		user.setSurname(request.getParameter("surname"));
+		user.setPseudo(request.getParameter("pseudo"));
+		user.setPassword(request.getParameter("password"));
 		
 		//request.setAttribute("user", user);   
 		getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);

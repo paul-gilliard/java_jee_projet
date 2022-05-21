@@ -230,6 +230,7 @@ font-weight: 400;
 body {
     background: #a71d31;
 }
+<<<<<<< HEAD
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300);
 
 .button__holder{
@@ -272,5 +273,6 @@ body {
         0 0 1px 30px rgba(#8A3B58, 0.1),
         0 0 1px 45px rgba(#8A3B58, 0.1);
     }
+
 
 
