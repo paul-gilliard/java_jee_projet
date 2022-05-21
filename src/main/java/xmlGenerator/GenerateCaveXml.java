@@ -2,6 +2,8 @@ package xmlGenerator;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,16 +21,17 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import metier.Bottle;
 import metier.Users;
 
 public class GenerateCaveXml {
 	
-	 public void generateFile(Users user) throws  IOException{
+	 public void generateFile(int userId) throws  IOException{
          
 		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 		
 		 String path = System.getProperty("user.dir");
-		 path = path+"/git/projet_jee_pal/src/main/webapp/XML/user.xml"; // POtentiellement Ã  adapter pour taffer Lisa, comportement chelou
+		 path = path+"/git/projet_jee_pal/src/main/webapp/XML/cave.xml"; // POtentiellement Ã  adapter pour taffer Lisa, comportement chelou
 		 File f = new File(path);
 		 if(f.exists() && !f.isDirectory()) {
 			 
@@ -42,32 +45,12 @@ public class GenerateCaveXml {
 			   System.out.println(racine.getNodeName());
 			   final NodeList racineNoeuds = racine.getChildNodes();
 			   
-			   
-			   Element pseudo = document.createElement(user.getPseudo());
-			   final Node usernode = racine.appendChild(pseudo);
-			   
-			   int id_user = racineNoeuds.getLength();
-			   String id_user_string = String.valueOf(id_user);
-			   Element userId = document.createElement("id_user");
-		        userId.setTextContent(id_user_string);;
-		        pseudo.appendChild(userId);
-		        
-			   Element name = document.createElement("name");
-		        name.setTextContent(user.getName());
-		        pseudo.appendChild(name);
 		  
-			   Element surname = document.createElement("surname");
-		        surname.setTextContent(user.getSurname());
-		        pseudo.appendChild(surname);
-		  
-			   Element password = document.createElement("password");
-		        password.setTextContent(user.getPassword());
-		        pseudo.appendChild(password);
+		        String id_user_string = String.valueOf(userId);
+		        Element id_cave = document.createElement("c"+id_user_string);
+		        racine.appendChild(id_cave);
 		        
 
-			    
-			   
-			   
 			   TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		        Transformer transformer = transformerFactory.newTransformer();
 		        DOMSource source = new DOMSource(document);
@@ -101,28 +84,13 @@ public class GenerateCaveXml {
 			        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			  
 			        Document doc = docBuilder.newDocument();
-			        Element rootElement = doc.createElement("user");
+			        Element rootElement = doc.createElement("caves");
 			        doc.appendChild(rootElement);
 			  
-			        Element pseudo = doc.createElement(user.getPseudo());
-			        rootElement.appendChild(pseudo);
+			        String id_user_string = String.valueOf(userId);
+			        Element id_cave = doc.createElement("c"+id_user_string);
+			        rootElement.appendChild(id_cave);
 			        
-			  
-				    Element userId = doc.createElement("id_user");
-				    userId.setTextContent("1");
-				    pseudo.appendChild(userId);
-				  
-			        Element name = doc.createElement("name");
-			        name.setTextContent(user.getName());
-			        pseudo.appendChild(name);
-			  
-			        Element surname = doc.createElement("surname");
-			        surname.setTextContent(user.getSurname());
-			        pseudo.appendChild(surname);
-			  
-			        Element password = doc.createElement("password");
-			        password.setTextContent(user.getPassword());
-			        pseudo.appendChild(password);
 			  
 			        TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			        Transformer transformer = transformerFactory.newTransformer();
@@ -144,58 +112,188 @@ public class GenerateCaveXml {
 		 }
 		  
 	      
-	   // return "Compte créee avec succés !";
+	   // return "Compte crï¿½ee avec succï¿½s !";
 	    }
 
-	 public static boolean isMatchedPseudoPassword(String pseudo,String inputPassword) { // test si un password est relier à un pseudo, renvoie true si oui, false sinon
-		 boolean match = false;
-		 System.out.println("Present Project Directory : "+ System.getProperty("cave.dir"));
-			
-		 String path = System.getProperty("cave.dir");
-		 path = path+"/src/main/webapp/XML/cave.xml"; // Potentiellement à  adapter pour taffer Lisa, comportement chelou
-			 
-			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			 Node nodeToExplore = null;
-			 try 
-			 {
-				 
-			   final DocumentBuilder builder = factory.newDocumentBuilder();
-			   final Document document= builder.parse(path);
-			   final Node pseudoNode = document.getElementById(pseudo);
-			   
-			   final Element racine = document.getDocumentElement();
-			   //System.out.println(racine.getNodeName());
-			   final NodeList racineNoeuds = racine.getChildNodes();
-			   
-			   
-			   final int nbRacineNoeuds = racineNoeuds.getLength();
-			   //System.out.println(nbRacineNoeuds);
-			   
-			   for (int i = 0; i<nbRacineNoeuds; i++) 
-			   {
-			     //System.out.println(racineNoeuds.item(i).getNodeName());
-			     if (racineNoeuds.item(i).getNodeName() == pseudo) {
-			    	 
-			    	 final Element user = (Element) racineNoeuds.item(i);
-			    	    //System.out.println(user.getNodeName());
-			    	    Node userNode =  (Node) user.getChildNodes();
-			    	    //System.out.println("password : " + userNode.getLastChild());
-			    	    Node password = userNode.getLastChild();
-			    	    //System.out.println(password.getTextContent() + "____" + inputPassword);
-			    	    if (password.getTextContent().equalsIgnoreCase(inputPassword)) {
-			    	    	match = true;
-			    	    }
-			     }
-			   }
-
-			//System.out.println("here" + nodeToExplore);
-			   
-			 } catch (Exception e) {
-				System.out.println(e.getMessage());
+	 public void addBottle(int userId, Bottle bottle) {
+	
+	System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+		
+	 String path = System.getProperty("user.dir");
+	 path = path+"/src/main/webapp/XML/cave.xml"; // POtentiellement Ã  adapter pour taffer Lisa, comportement chelou
+	 System.out.println("path" + path);
+	 File f = new File(path);
+	 if(f.exists() && !f.isDirectory()) {
+		 
+		 try 
+		 {
+		   final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		   final DocumentBuilder builder = factory.newDocumentBuilder();
+		   final Document document= builder.parse(path);
+		   
+		   final Element racine = document.getDocumentElement();
+		   //System.out.println(racine.getNodeName());
+		   final NodeList racineNoeuds = racine.getChildNodes();
+		   
+		   
+		   final int nbRacineNoeuds = racineNoeuds.getLength();
+		   System.out.println("nbracineNoeauds "+nbRacineNoeuds);
+		   
+		   for (int i = 0; i<nbRacineNoeuds; i++) 
+		   {
+		     //System.out.println(racineNoeuds.item(i).getNodeName());
+		    	 
+		    	 final Element cave = (Element) racineNoeuds.item(i);
+		    	    //System.out.println(user.getNodeName());
+		    	    Node caveNode =  (Node) cave.getChildNodes();
+		    	    String id_user_string = String.valueOf(userId);
+		    	    System.out.println("comparaison : " + caveNode.getNodeName() + "/" + "c"+id_user_string);
+		    	    if((caveNode.getNodeName()).equalsIgnoreCase("c"+id_user_string)) {
+		    	    	System.out.println("correspondance");
+		    	    	String id_bottle_string = String.valueOf(bottle.getId());
+		    	    	Node id_bottle = document.createElement("b"+id_bottle_string);
+		    	    	caveNode.appendChild(id_bottle);
+		    	    	
+		    	    	TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				        Transformer transformer = transformerFactory.newTransformer();
+				        DOMSource source = new DOMSource(document);
+				        StreamResult result = new StreamResult(path);
+				  
+				        transformer.transform(source, result);
+		    	    	/*NodeList elementCave =  caveNode.getChildNodes();
+			    	    final int nbElementCave = elementCave.getLength();
+			    	    for (int j = 0; j<nbElementCave; j++) 
+						   {
+			    	    	final Node bottleElem = (Node) elementCaveitem(j);
+			    	    	listElement.add(bottleElem.getTextContent());
+						   }*/
+		    	    }
+		    	    
+		    	    //System.out.println("password : " + userNode.getLastChild());
+		    	    
+		    	    
+		    	  
+		    	    
+		    	    //System.out.println(password.getTextContent() + "____" + inputPassword);
+		    	   
+		     
+		   }
+		 } 
+		      catch (ParserConfigurationException pce) {
+		        pce.printStackTrace();
+		      } catch (SAXException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			 
-			 return match;
+		 
 	 }
+	  
+      
+   // return "Compte crï¿½ee avec succï¿½s !";
+    }
+	 
+	 
+	 public void removeBottle(int userId, String idBootle) {
+			
+			System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+				
+			 String path = System.getProperty("user.dir");
+			 path = path+"/src/main/webapp/XML/cave.xml"; // POtentiellement Ã  adapter pour taffer Lisa, comportement chelou
+			 System.out.println("path" + path);
+			 File f = new File(path);
+			 if(f.exists() && !f.isDirectory()) {
+				 
+				 try 
+				 {
+				   final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				   final DocumentBuilder builder = factory.newDocumentBuilder();
+				   final Document document= builder.parse(path);
+				   
+				   final Element racine = document.getDocumentElement();
+				   //System.out.println(racine.getNodeName());
+				   final NodeList racineNoeuds = racine.getChildNodes();
+				   
+				   
+		    	    
+		    	    
+				   final int nbRacineNoeuds = racineNoeuds.getLength();
+				   System.out.println("nbracineNoeauds "+nbRacineNoeuds);
+				   
+				   for (int i = 0; i<nbRacineNoeuds; i++) 
+				   {
+				     //System.out.println(racineNoeuds.item(i).getNodeName());
+				    	 
+				    	 final Element cave = (Element) racineNoeuds.item(i);
+				    	    //System.out.println(user.getNodeName());
+				    	    Node caveNode =  (Node) cave.getChildNodes();
+				    	    NodeList caveNodeList =  cave.getChildNodes();
+				    	    String id_user_string = String.valueOf(userId);
+				    	    System.out.println("comparaison : " + caveNode.getNodeName() + "/" + "c"+id_user_string);
+				    	    if((caveNode.getNodeName()).equalsIgnoreCase("c"+id_user_string)) {
+				    	    	System.out.println("correspondance");
+				    	    	final Node bottleElem = (Node) caveNodeList.item(i);
+				    	    	System.out.println("Node" + bottleElem.getNodeName());
+				    	    	//System.out.println("Node" + caveNode.getNodeName());
+				    	    	if(bottleElem.getNodeName().equalsIgnoreCase(idBootle)) {
+				    	    		System.out.println("Delete...");
+				    	    		caveNode.removeChild(bottleElem);
+				    	    	}
+				    	    	
+				    	    	TransformerFactory transformerFactory = TransformerFactory.newInstance();
+						        Transformer transformer = transformerFactory.newTransformer();
+						        DOMSource source = new DOMSource(document);
+						        StreamResult result = new StreamResult(path);
+						  
+						        transformer.transform(source, result);
+				    	    	/*NodeList elementCave =  caveNode.getChildNodes();
+					    	    final int nbElementCave = elementCave.getLength();
+					    	    for (int j = 0; j<nbElementCave; j++) 
+								   {
+					    	    	final Node bottleElem = (Node) elementCaveitem(j);
+					    	    	listElement.add(bottleElem.getTextContent());
+								   }*/
+				    	    }
+				    	    
+				    	    //System.out.println("password : " + userNode.getLastChild());
+				    	    
+				    	    
+				    	  
+				    	    
+				    	    //System.out.println(password.getTextContent() + "____" + inputPassword);
+				    	   
+				     
+				   }
+				 } 
+				      catch (ParserConfigurationException pce) {
+				        pce.printStackTrace();
+				      } catch (SAXException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (TransformerConfigurationException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (TransformerException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				 
+			 }
+			  
+		      
+		   // return "Compte crï¿½ee avec succï¿½s !";
+		    }
 }
 	 
 
