@@ -2,7 +2,10 @@ package xmlGenerator;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -31,7 +34,7 @@ public class GenerateCaveXml {
 		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 		
 		 String path = System.getProperty("user.dir");
-		 path = path+"/git/projet_jee_pal/src/main/webapp/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+		 path = path+"/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 		 File f = new File(path);
 		 if(f.exists() && !f.isDirectory()) {
 			 
@@ -120,7 +123,7 @@ public class GenerateCaveXml {
 	System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 		
 	 String path = System.getProperty("user.dir");
-	 path = path+"/src/main/webapp/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+	 path = path+"/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 	 System.out.println("path" + path);
 	 File f = new File(path);
 	 if(f.exists() && !f.isDirectory()) {
@@ -138,7 +141,7 @@ public class GenerateCaveXml {
 		   
 		   final int nbRacineNoeuds = racineNoeuds.getLength();
 		   System.out.println("nbracineNoeauds "+nbRacineNoeuds);
-		   
+		   System.out.println("jusquela");
 		   for (int i = 0; i<nbRacineNoeuds; i++) 
 		   {
 		     //System.out.println(racineNoeuds.item(i).getNodeName());
@@ -159,6 +162,7 @@ public class GenerateCaveXml {
 				        DOMSource source = new DOMSource(document);
 				        StreamResult result = new StreamResult(path);
 				  
+				        
 				        transformer.transform(source, result);
 		    	    	/*NodeList elementCave =  caveNode.getChildNodes();
 			    	    final int nbElementCave = elementCave.getLength();
@@ -207,7 +211,7 @@ public class GenerateCaveXml {
 			System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 				
 			 String path = System.getProperty("user.dir");
-			 path = path+"/src/main/webapp/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+			 path = path+"/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 			 System.out.println("path" + path);
 			 File f = new File(path);
 			 if(f.exists() && !f.isDirectory()) {
@@ -294,6 +298,70 @@ public class GenerateCaveXml {
 		      
 		   // return "Compte cr�ee avec succ�s !";
 		    }
+	 
+	 public HashMap<String, List> getBottlesOfUser(int userId) { // renvoie une hashmap <b+id_bouteille,list<attributs_bouteille>> de l'idBOuteille en paramètre (sous la form b+id_bouteille)
+		 String id_user_string = String.valueOf(userId);
+		// System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+			
+		String path = System.getProperty("user.dir");
+		 //Path pathObject = FileSystems.getDefault().getPath("XML").toAbsolutePath();
+		 //String path = pathObject.toString();
+		 System.out.println(path);
+		 path = path+"/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+			 
+			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			 Node nodeToExplore = null;
+			 HashMap<String, List> allBottle = new HashMap<String, List>();
+			 
+			 try 
+			 {
+				 
+			   final DocumentBuilder builder = factory.newDocumentBuilder();
+			   final Document document= builder.parse(path);
+			   
+			   final Element racine = document.getDocumentElement();
+			   //System.out.println(racine.getNodeName());
+			   final NodeList racineNoeuds = racine.getChildNodes();
+			   
+			   
+			   final int nbRacineNoeuds = racineNoeuds.getLength();
+			   //System.out.println(nbRacineNoeuds);
+			   
+			   for (int i = 0; i<nbRacineNoeuds; i++) 
+			   {
+			     //System.out.println(racineNoeuds.item(i).getNodeName());
+			     List listElement = new ArrayList<String>();
+			    	 
+			    	 final Element bottle = (Element) racineNoeuds.item(i);
+			    	    //System.out.println(user.getNodeName());
+			    	    Node bottleNode =  (Node) bottle.getChildNodes();
+			    	    
+			    	    
+			    	    //System.out.println("password : " + userNode.getLastChild());
+			    	    NodeList elementBottle =  bottleNode.getChildNodes();
+			    	    final int nbElementBottle = elementBottle.getLength();
+			    	    for (int j = 0; j<nbElementBottle; j++) 
+						   {
+			    	    	final Node bottleElem = (Node) elementBottle.item(j);
+			    	    	listElement.add(bottleElem.getNodeName());
+						   }
+			    	    
+			    	    if(bottleNode.getNodeName().equalsIgnoreCase("c"+id_user_string)) {
+			    	    allBottle.put(bottleNode.getNodeName(), listElement);
+			    	    }
+			    	    
+			    	    
+			    	    //System.out.println(password.getTextContent() + "____" + inputPassword);
+			    	   
+			     
+			   }
+			 } catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+	
+			 return allBottle;
+		 
+	}
 }
 	 
 
