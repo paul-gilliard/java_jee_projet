@@ -1,6 +1,11 @@
 package metier;
 
+import java.util.HashMap;
+import java.util.List;
+
+import xmlGenerator.GenerateCaveXml;
 import xmlGenerator.GenerateUserXml;
+import xmlGenerator.generatorCatalogXml;
 
 public class Users {
 	String pseudo;
@@ -83,6 +88,16 @@ public class Users {
 	public String toString() {
 		return "Users [pseudo=" + pseudo + ", name=" + name + ", surname=" + surname + ", password=" + password
 				+ ", id=" + id + ", cave=" + cave + "]";
+	}
+	
+	public HashMap<String, List> getBottles(){
+		GenerateCaveXml gen = new GenerateCaveXml();
+		return gen.getBottlesOfUser(this.id);
+	}
+	
+	public HashMap<String, List> getBottlesById(String bottleId){
+		generatorCatalogXml gen = new generatorCatalogXml();
+		return gen.getOneBottleFromCatalogById(bottleId);
 	}
 	
 	
