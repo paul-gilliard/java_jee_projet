@@ -5,6 +5,7 @@ package web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +25,7 @@ public class LoginCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private GenerateUserXml userxml;
+	private generatorCatalogXml catalogxml;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,6 +39,7 @@ public class LoginCheck extends HttpServlet {
    	public void init() throws ServletException {
     	//catalog = new generatorCatalogXml();
    		userxml = new GenerateUserXml();
+   		catalogxml = new generatorCatalogXml();
    		super.init();
    		
    	}
@@ -60,10 +63,20 @@ public class LoginCheck extends HttpServlet {
 		
 		System.out.println(user.toString());
 		//request.setAttribute("catalog", catalog);
+		ServletContext application = request.getSession().getServletContext();
+		System.out.println(catalogxml.getAllBottleFromCatalog().get("b1"));
+		System.out.println(catalogxml.getAllBottleFromCatalog().get("b1").get(0));
+		System.out.println(catalogxml.getAllBottleFromCatalog().get("b1").get(1));
+		int i =1;
+		System.out.println(catalogxml.getAllBottleFromCatalog().get("b"+i));
+		
+		//request.setAttribute("catalog", catalogxml);
+		application.setAttribute("user", user)	;
+		application.setAttribute("catalog", catalogxml.getAllBottleFromCatalog())	;
 		request.setAttribute("user", user);
 		getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
-			 
-		
+		 
+	
 	}
 
 	/**
