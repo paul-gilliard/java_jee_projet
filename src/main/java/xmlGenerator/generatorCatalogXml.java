@@ -203,7 +203,7 @@ public class generatorCatalogXml {
 
 	 public HashMap<String, List> getAllBottleFromCatalog() { // Renvoie une hashmap <b+id_bouteille,list<attributs_bouteille>> de toutes les bouteilles du catalogue
 		 boolean match = false;
-		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+		 //System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 			
 		 String path = System.getProperty("user.dir");
 		 path = path+"/XML/catalog.xml";  // POtentiellement à adapter pour taffer Lisa, comportement chelou

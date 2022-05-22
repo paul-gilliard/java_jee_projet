@@ -14,12 +14,12 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
     <link href="style.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Poppins"
 	rel="stylesheet">
-    <title>Ma cave</title>
+    <title>La Dyoni cave</title>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
     <%@ page import="metier.Users" %>
     <%@ page import="xmlGenerator.generatorCatalogXml" %>
-    <jsp:useBean id="user" type="metier.Users" scope="request" />
-     <jsp:useBean id="catalog" type="xmlGenerator.generatorCatalogXml" scope="request" />
+    <jsp:useBean id="user" type="metier.Users" scope="application" />
+     <jsp:useBean id="catalog" type="java.util.HashMap" scope="application" />
    
 </head>
 
@@ -44,7 +44,8 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
     <h1>La Dyoni cave</h1>
     
     <div class="cards-list wines">
-	<% for(int i = 0; i < user.getCave().getSize(); i+=1) { %>
+	<% for(int i = 0; i < 2; i+=1) { 
+		String b = "b"+i;%>
         <div class="card-wine 1">
             <div class="card_image">
                 <img src="https://bordeaux-rive-droite.com/wp-content/uploads/2015/03/La-grave-2011-457x800.jpg" />
@@ -52,30 +53,30 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
             <div class="card_description">
                 <div class="card_description_major">
                     <div class="bottle_name">
-                        <p>${user.getCave(i).getBottle_name()}</p>
+                        <p>catalog.get(j).get(0)</p>
                     </div>
                     <div class="castle">
-                        <p>${user.getCave(i).getCastle()}</p>
+                        <p>${catalog.get(j).get(1)}</p>
                     </div>
                     <div class="mill">
-                        <p>${user.getCave(i).getMill()}</p>
+                        <p>${catalog.get(j).get(2)}</p>
                     </div>
                 </div>
                 <div class="card_description_minor">
                     <div class="region">
-                        <p>${user.getCave(i).getRegion()}</p>
+                        <p>${catalog.get(j).get(3)}</p>
                     </div>
                     <div class="color">
-                        <p>${user.getCave(i).getColor()}</p>
+                        <p>${catalog.get(j).get(4)}</p>
                     </div>
                     <div class="alcool">
-                        <p>${user.getCave(i).getAlcool()}</p>
+                        <p>${catalog.get(j).get(5)}</p>
                     </div>
                     <div class="garde">
-                        <p>${user.getCave(i).getGarde()}</p>
+                        <p>${catalog.get(j).get(6)}</p>
                     </div>
                     <div class="rating">
-                        <p>${user.getCave(i).getRating()}</p>
+                        <p>${catalog.get(j).get(7)}</p>
                     </div>
                 </div>
             </div>
@@ -125,30 +126,30 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
             <div class="card_description">
                 <div class="card_description_major">
                     <div class="bottle_name">
-                        <p>bottle_name</p>
+                        <p>${catalog.get("b1").get(0)}</p>
                     </div>
                     <div class="castle">
-                        <p>castle</p>
+                        <p>${catalog.get("b1").get(1)}</p>
                     </div>
                     <div class="mill">
-                        <p>mill</p>
+                        <p>${catalog.get("b1").get(2)}</p>
                     </div>
                 </div>
                 <div class="card_description_minor">
                     <div class="region">
-                        <p>region</p>
+                        <p>${catalog.get("b1").get(3)}</p>
                     </div>
                     <div class="color">
-                        <p>color</p>
+                        <p>${catalog.get("b1").get(4)}</p>
                     </div>
                     <div class="alcool">
-                        <p>alcool</p>
+                        <p>${catalog.get("b1").get(5)}°C</p>
                     </div>
                     <div class="garde">
-                        <p>garde</p>
+                        <p>${catalog.get("b1").get(6)} ans</p>
                     </div>
                     <div class="rating">
-                        <p>rating</p>
+                        <p>${catalog.get("b1").get(7)} étoile</p>
                     </div>
                 </div>
             </div>

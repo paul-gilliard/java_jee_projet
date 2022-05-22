@@ -54,7 +54,7 @@ public class CatalogCheck extends HttpServlet {
 		System.out.println(user.toString());
 		System.out.println(catalogxml.getAllBottleFromCatalog().get("b"+user.getId()));
 		
-		request.setAttribute("catalog", catalog);
+		//request.setAttribute("catalog", catalog);
 		request.setAttribute("user", user);
 		getServletConfig().getServletContext().getRequestDispatcher("/catalog.jsp").forward(request,response);
 

@@ -17,7 +17,8 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
     <title>Ma cave</title>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
     <%@ page import="metier.Users" %>
-    <jsp:useBean id="user" type="metier.Users" scope="request" />
+    <jsp:useBean id="user" type="metier.Users" scope="application" />
+     <jsp:useBean id="catalog" type="java.util.HashMap" scope="application" />
    
 </head>
 
@@ -30,7 +31,7 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
         <ul>
           <li><a href="?page=macave">Ma Cave</a></li>
           <li><a href="#lacom">La Communauté</a></li>
-          <li><a href="CatalogCheck" accesskey="1" title="">La Dyoni Cave</a></li>
+          <li><a href="catalog.jsp" accesskey="1" title="">La Dyoni Cave</a></li>
         </ul>
         <div class = "logged-user">
             <img src="https://media1.giphy.com/media/hryis7A55UXZNCUTNA/giphy.gif">
