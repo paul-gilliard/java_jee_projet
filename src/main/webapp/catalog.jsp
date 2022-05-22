@@ -41,6 +41,9 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
         <div class = "logged-user">
             <img src="https://media1.giphy.com/media/hryis7A55UXZNCUTNA/giphy.gif">
             <span class ="name-logged-user">${user.getName()} ${user.getSurname()} </span>
+             </br>
+             <span class ="name-logged-user"><a href="login.jsp">déconnexion</a> </span>
+        </div>
         </div>
     </nav>
 
