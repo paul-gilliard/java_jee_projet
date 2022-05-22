@@ -29,6 +29,7 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
 
 <body>
 
+<% HashMap<String,List> userBottles =  user.getBottles();%>
 
 
     <nav class="menu">
@@ -49,67 +50,46 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
     
 <div class="section-application">
     <h1>Ma cave</h1>
-    
-  <% HashMap<String,List> userBottles =  user.getBottles();%>
-    <%-- <p><% out.println("ça"+userBottles.get("c"+user.getId())); %></p> --%>
-    <% int TailleBoucle=0;%>
-    <% if (userBottles.size() == 0){ TailleBoucle=0;} else { TailleBoucle = userBottles.get("c"+user.getId()).size();} %>
     <div class="cards-list wines">
-
-	<% for(int i = 1; i<TailleBoucle ; i+=1) { 
-		String j = "b"+i; %>
-		<%-- <p><% out.println("ça" + userBottles.get("c"+user.getId()).get(i)); %></p> --%>
-		<p><% String idBottle = userBottles.get("c"+user.getId()).get(i).toString(); %></p>
-		<p><% HashMap<String,List> attributeBottle = user.getBottlesById(idBottle); %></p>
-		<p><% List listAttribute = attributeBottle.get(idBottle); %></p>
-		 <%out.println(attributeBottle); %>
-		 
-		 <%-- <p><% out.println(listAttribute); %></p> --%>
-		<%-- <p><%  List<String> a = (List<String>)userBottles.get("b"+i); %></p> --%>
-	<%-- 	<p><%  out.println(a.getClass());  %></p> --%>
-		<%-- <p><% out.println(a.get(0));%></p> --%>
-		
-         <%-- <div class="card-wine 1">
-
 
       
         <div class="card-wine 2">
- refs/remotes/origin/main
             <div class="card_image">
-                <img src="https://bordeaux-rive-droite.com/wp-content/uploads/2015/03/La-grave-2011-457x800.jpg" />
+                <img
+                    src="https://static.cavissima.com/pub/media/catalog/product/cache/21d5b20501320b0a15de21a395cff332/c/h/chateau-d-yquem-sauternes-blancdor_bouteille_17_1_2.png" />
             </div>
             <div class="card_description">
                 <div class="card_description_major">
                     <div class="bottle_name">
-                        <p><% out.println(listAttribute.get(0));%></p>
+                    <% out.println(userBottles.get("b4")); %>
+                        <p><%userBottles.get("b"+user.getId()); %></p>
                     </div>
                     <div class="castle">
-                        <p><% out.println(listAttribute.get(1));%></p>
+                        <p>castle</p>
                     </div>
                     <div class="mill">
-                        <p><% out.println(listAttribute.get(2));%></p>
+                        <p>mill</p>
                     </div>
                 </div>
                 <div class="card_description_minor">
                     <div class="region">
-                        <p><% out.println(listAttribute.get(3));%></p>
+                        <p>region</p>
                     </div>
                     <div class="color">
-                        <p><% out.println(listAttribute.get(4));%></p>
+                        <p>color</p>
                     </div>
                     <div class="alcool">
-                        <p><% out.println(listAttribute.get(5));%></p>
+                        <p>alcool</p>
                     </div>
                     <div class="garde">
-                        <p><% out.println(listAttribute.get(6));%></p>
+                        <p>garde</p>
                     </div>
                     <div class="rating">
-                        <p><% out.println(listAttribute.get(7));%></p>
+                        <p>rating</p>
                     </div>
                 </div>
             </div>
-        </div>  --%>
-		<%} %>
+        </div>
 
         <div class="card-wine 3">
         

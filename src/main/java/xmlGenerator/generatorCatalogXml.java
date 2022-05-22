@@ -37,7 +37,7 @@ public class generatorCatalogXml {
 		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 		
 		 String path = System.getProperty("user.dir");
-		 path = "C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/catalog.xml"; // Potentiellement à adapter pour taffer Lisa, comportement chelou
+		 path = path+"/XML/catalog.xml"; // Potentiellement à adapter pour taffer Lisa, comportement chelou
 		 File f = new File(path);
 		 if(f.exists() && !f.isDirectory()) {
 			 
@@ -206,7 +206,7 @@ public class generatorCatalogXml {
 		 //System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 			
 		 String path = System.getProperty("user.dir");
-		 path ="C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/catalog.xml";  // POtentiellement à adapter pour taffer Lisa, comportement chelou
+		 path =path+"/XML/catalog.xml";;  // POtentiellement à adapter pour taffer Lisa, comportement chelou
 			 
 			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			 Node nodeToExplore = null;
@@ -266,7 +266,7 @@ public class generatorCatalogXml {
 		
 		 
 		 String path = System.getProperty("user.dir");
-		 path = "C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/catalog.xml";  // POtentiellement à adapter pour taffer Lisa, comportement chelou
+		 path = path+"/XML/catalog.xml";  // POtentiellement à adapter pour taffer Lisa, comportement chelou
 			 
 			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			 Node nodeToExplore = null;
@@ -304,7 +304,9 @@ public class generatorCatalogXml {
 			    	    	final Node bottleElem = (Node) elementBottle.item(j);
 			    	    	listElement.add(bottleElem.getTextContent());
 						   }
+			    	    System.out.println(bottleNode.getNodeName() + "|" + idBouteille );
 			    	    if(bottleNode.getNodeName().equalsIgnoreCase(idBouteille)) {
+			    	    	System.out.println("test passé");
 			    	    allBottle.put(bottleNode.getNodeName(), listElement);
 			    	    }
 			    	    
@@ -328,7 +330,7 @@ public class generatorCatalogXml {
 		System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 		 Integer id_bouteille = 0;
 		 String path = System.getProperty("user.dir");
-		 path = "C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/catalog.xml";
+		 path = path+"/XML/catalog.xml";;
 		 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		 DocumentBuilder builder;
 		try {
