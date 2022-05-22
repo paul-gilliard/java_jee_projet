@@ -34,7 +34,7 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
     <nav class="menu">
         <div class ="home">Dyoni</div>
         <ul>
-          <li><a href="?page=macave">Ma Cave</a></li>
+          <li><a href="index.jsp">Ma Cave</a></li>
           <li><a href="#lacom">La Communauté</a></li>
           <li><a href="#">La Dyoni Cave</a></li>
         </ul>
@@ -47,7 +47,9 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
         </div>
     </nav>
 
-    
+     
+<div class="section-application">
+
     <h1>La Dyoni cave</h1>
     
     <% HashMap<String,List> AllBottles =  user.getAllBottleFromCatalog();%>
@@ -82,152 +84,44 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
                         <p><% out.println(a.get(4));%></p>
                     </div>
                     <div class="alcool">
-                        <p><% out.println(a.get(5));%></p>
+                        <p><% out.println(a.get(5));%> °C</p>
                     </div>
                     <div class="garde">
-                        <p><% out.println(a.get(6));%></p>
+                        <p><% out.println(a.get(6));%> ans</p>
                     </div>
                     <div class="rating">
-                        <p><% out.println(a.get(7));%></p>
+                        <p><% out.println(a.get(7));%>⭐</p>
                     </div>
                 </div>
             </div>
         </div>
 		<%} %>
-        <div class="card-wine 1">
-            <div class="card_image">
-                <img src="https://bordeaux-rive-droite.com/wp-content/uploads/2015/03/La-grave-2011-457x800.jpg" />
-            </div>
-            <div class="card_description">
-                <div class="card_description_major">
-                    <div class="bottle_name">
-                        <p>${cave.getCave(i).getBottle_name()}</p>
-                    </div>
-                    <div class="castle">
-                        <p>${cave.getCave(i).getCastle()}</p>
-                    </div>
-                    <div class="mill">
-                        <p>${cave.getCave(i).getMill()}</p>
-                    </div>
-                </div>
-                <div class="card_description_minor">
-                    <div class="region">
-                        <p>${cave.getCave(i).getRegion()}</p>
-                    </div>
-                    <div class="color">
-                        <p>${cave.getCave(i).getColor()}</p>
-                    </div>
-                    <div class="alcool">
-                        <p>${cave.getCave(i).getAlcool()}</p>
-                    </div>
-                    <div class="garde">
-                        <p>${cave.getCave(i).getGarde()}</p>
-                    </div>
-                    <div class="rating">
-                        <p>${cave.getCave(i).getRating()}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-		
-        <div class="card-wine 2">
-            <div class="card_image">
-                <img
-                    src="https://static.cavissima.com/pub/media/catalog/product/cache/21d5b20501320b0a15de21a395cff332/c/h/chateau-d-yquem-sauternes-blancdor_bouteille_17_1_2.png" />
-            </div>
-            <div class="card_description">
-                <div class="card_description_major">
-                    <div class="bottle_name">
-                        <p>${catalog.get("b1").get(0)}</p>
-                    </div>
-                    <div class="castle">
-                        <p>${catalog.get("b1").get(1)}</p>
-                    </div>
-                    <div class="mill">
-                        <p>${catalog.get("b1").get(2)}</p>
-                    </div>
-                </div>
-                <div class="card_description_minor">
-                    <div class="region">
-                        <p>${catalog.get("b1").get(3)}</p>
-                    </div>
-                    <div class="color">
-                        <p>${catalog.get("b1").get(4)}</p>
-                    </div>
-                    <div class="alcool">
-                        <p>${catalog.get("b1").get(5)}°C</p>
-                    </div>
-                    <div class="garde">
-                        <p>${catalog.get("b1").get(6)} ans</p>
-                    </div>
-                    <div class="rating">
-                        <p>${catalog.get("b1").get(7)} étoile</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
 
         <div class="card-wine 3">
+        
             <div class="card_image">
+            
                 <img src="https://medias.nicolas.com/media/sys_master/h88/h7f/9315255287838.png" />
             </div>
+          
             <div class="card_description">
+              <a href="bottleForm.jsp?pseudo=${user.getPseudo()">
                 <div class="card_description_major">
                     <div class="bottle_name">
                         <p>Ajouter une bouteille</p>
                     </div>
                     
                 </div>
-                <div class="card_description_minor">
-                    
-                    <div class="button__holder">
-    				<button class="plus"><a href="bottleForm.jsp"></a></button>
-					</div>
-                     
+                </a>
+                </div>
+  		     </div>
+        </div>
+
+  
     
-                </div>
-            </div>
-        </div>
-
-        <div class="card-wine 4">
-            <div class="card_image">
-                <img src="https://onwine.pf/2234-large_default/porto-valdouro-tawny-19.jpg" />
-            </div>
-            <div class="card_description">
-                <div class="card_description_major">
-                    <div class="bottle_name">
-                        <p>bottle_name</p>
-                    </div>
-                    <div class="castle">
-                        <p>castle</p>
-                    </div>
-                    <div class="mill">
-                        <p>mill</p>
-                    </div>
-                </div>
-                <div class="card_description_minor">
-                    <div class="region">
-                        <p>region</p>
-                    </div>
-                    <div class="color">
-                        <p>color</p>
-                    </div>
-                    <div class="alcool">
-                        <p>alcool</p>
-                    </div>
-                    <div class="garde">
-                        <p>garde</p>
-                    </div>
-                    <div class="rating">
-                        <p>rating</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
-    <div class="section-application">
+</div>
+    <div class="section-application" id="lacom">
     <h1>La communauté</h1>
     <div class="cards-list users">
         <div class="card-user 1">
