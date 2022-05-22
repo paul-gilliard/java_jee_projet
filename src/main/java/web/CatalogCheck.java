@@ -1,6 +1,8 @@
 package web;
 
 import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,8 +55,9 @@ public class CatalogCheck extends HttpServlet {
 		user.setPassword(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(3).toString());
 		System.out.println(user.toString());
 		System.out.println(catalogxml.getAllBottleFromCatalog().get("b"+user.getId()));
-		
+		ServletContext application = request.getSession().getServletContext();
 		//request.setAttribute("catalog", catalog);
+		application.setAttribute("user",user);
 		request.setAttribute("user", user);
 		getServletConfig().getServletContext().getRequestDispatcher("/catalog.jsp").forward(request,response);
 

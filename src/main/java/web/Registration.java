@@ -3,6 +3,7 @@ package web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +16,7 @@ import metier.Catalog;
 import metier.Users;
 import xmlGenerator.GenerateCaveXml;
 import xmlGenerator.GenerateUserXml;
+import xmlGenerator.generatorCatalogXml;
 
 /**
  * Servlet implementation class Registration
@@ -22,6 +24,8 @@ import xmlGenerator.GenerateUserXml;
 @WebServlet("/Registration")
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private GenerateUserXml userxml;
+	private generatorCatalogXml catalogxml;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,6 +38,8 @@ public class Registration extends HttpServlet {
     @Override
    	public void init() throws ServletException {
    		// TODO Auto-generated method stub
+    	userxml = new GenerateUserXml();
+   		catalogxml = new generatorCatalogXml();
    		super.init();
    		
    	}
@@ -58,7 +64,12 @@ public class Registration extends HttpServlet {
 	    genCave.generateFile(user.getId());
 	    gen.generateFile(user);
 
-	    request.setAttribute("user", user);
+	  
+	  
+	    ServletContext application = request.getSession().getServletContext();
+		//request.setAttribute("catalog", catalogxml);
+		application.setAttribute("user", user)	;
+		application.setAttribute("catalog", catalogxml.getAllBottleFromCatalog())	;
 	    
 		getServletConfig().getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 

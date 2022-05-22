@@ -3,6 +3,7 @@ package web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -70,8 +71,10 @@ public class NewBottle extends HttpServlet {
 		user.getCave().addNewBottleFromList(user.getId(), bottle);
 		catalog.addNewBottle(user.getId(), bottle);
 		System.out.println(user.toString());
-		
+		ServletContext application = request.getSession().getServletContext();
 		request.setAttribute("user", user);
+		application.setAttribute("user", user)	;
+		application.setAttribute("catalog", catalogxml.getAllBottleFromCatalog())	;
 		
 		System.out.println(user.getCave().getSize());
 		

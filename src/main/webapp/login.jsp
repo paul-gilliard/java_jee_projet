@@ -8,6 +8,7 @@
 </head>
 <body>
 <%@include file="logo.jsp" %>
+</br>
 	<div class="section-application">
 		<h1>Se connecter</h1>
 		<form method="post" action="LoginCheck">
@@ -21,6 +22,10 @@
 				</tr>
 			</table>
 		</form>
+		
+		
 	</div>
+	
+	 
 </body>
 </html>

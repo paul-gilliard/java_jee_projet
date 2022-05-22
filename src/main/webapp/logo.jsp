@@ -1,1 +1,1 @@
-<div class ="home">Dyoni</div>
+<div class ="home">Dyoni		<a href="registration.jsp">Créer un compte</a> </div>
