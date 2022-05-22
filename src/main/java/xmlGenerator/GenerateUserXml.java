@@ -34,7 +34,7 @@ public class GenerateUserXml {
 		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 		
 		 String path = System.getProperty("user.dir");
-		 path = "C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/user.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+		 path = path+"/XML/user.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 		 File f = new File(path);
 		 if(f.exists() && !f.isDirectory()) {
 			 
@@ -158,7 +158,7 @@ public class GenerateUserXml {
 		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 			
 		 String path = System.getProperty("user.dir");
-		 path ="C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/user.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+		 path = path+"/XML/user.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 			 
 			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			 Node nodeToExplore = null;
@@ -209,7 +209,7 @@ public class GenerateUserXml {
 		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 			
 		 String path = System.getProperty("user.dir");
-		 path = "C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/user.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+		 path = path+"/XML/user.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 			 
 			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			 Node nodeToExplore = null;
@@ -271,7 +271,7 @@ public Integer idIncrementedUser(){
 		System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 		 Integer id_user = 0;
 		 String path = System.getProperty("user.dir");
-		 path = path+"/src/main/webapp/XML/user.xml";
+		 path = path+"/XML/user.xml";
 		 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		 DocumentBuilder builder;
 		try {
