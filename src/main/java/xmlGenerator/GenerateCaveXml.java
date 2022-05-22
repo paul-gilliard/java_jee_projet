@@ -34,7 +34,7 @@ public class GenerateCaveXml {
 		 System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 		
 		 String path = System.getProperty("user.dir");
-		 path = "C:\\\\Users\\\\5iem Hokage\\\\git\\\\java_jee_projet/src/main/webapp/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+		 path = path+"/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 		 File f = new File(path);
 		 if(f.exists() && !f.isDirectory()) {
 			 
@@ -123,7 +123,7 @@ public class GenerateCaveXml {
 	System.out.println("Present Project Directory addBottle: "+ System.getProperty("user.dir"));
 		
 	 String path = System.getProperty("user.dir");
-	 path = "C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+	 path = path+"/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 	 System.out.println("path" + path);
 	 File f = new File(path);
 	 System.out.println("if" + (f.exists() && !f.isDirectory()));
@@ -213,7 +213,7 @@ public class GenerateCaveXml {
 			System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
 				
 			 String path = System.getProperty("user.dir");
-			 path ="C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+			 path = path+"/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 			 System.out.println("path" + path);
 			 File f = new File(path);
 			 if(f.exists() && !f.isDirectory()) {
@@ -309,7 +309,7 @@ public class GenerateCaveXml {
 		 //Path pathObject = FileSystems.getDefault().getPath("XML").toAbsolutePath();
 		 //String path = pathObject.toString();
 		 System.out.println(path);
-		 path = "C:/Users/5iem Hokage/git/java_jee_projet/src/main/webapp/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
+		 path = path+"/XML/cave.xml"; // POtentiellement à adapter pour taffer Lisa, comportement chelou
 			 
 			 final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			 Node nodeToExplore = null;
