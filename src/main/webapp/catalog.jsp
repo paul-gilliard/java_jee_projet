@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="javax.xml.parsers.DocumentBuilderFactory,
@@ -43,9 +47,14 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
     
     <h1>La Dyoni cave</h1>
     
+    <% HashMap<String,List> AllBottles =  user.getAllBottleFromCatalog();%>
+    
     <div class="cards-list wines">
-	<% for(int i = 0; i < 2; i+=1) { 
-		String b = "b"+i;%>
+	<% for(int i = 1; i<user.getTailleCave()  ; i+=1) { 
+		String j = "b"+i; %>
+		<p><%  List<String> a = (List<String>)AllBottles.get("b"+i); %></p>
+		<%-- <p><% out.println(a.get(0));%></p> --%>
+		
         <div class="card-wine 1">
             <div class="card_image">
                 <img src="https://bordeaux-rive-droite.com/wp-content/uploads/2015/03/La-grave-2011-457x800.jpg" />
@@ -53,30 +62,30 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
             <div class="card_description">
                 <div class="card_description_major">
                     <div class="bottle_name">
-                        <p>catalog.get(j).get(0)</p>
+                        <p><% out.println(a.get(0));%></p>
                     </div>
                     <div class="castle">
-                        <p>${catalog.get(j).get(1)}</p>
+                        <p><% out.println(a.get(1));%></p>
                     </div>
                     <div class="mill">
-                        <p>${catalog.get(j).get(2)}</p>
+                        <p><% out.println(a.get(2));%></p>
                     </div>
                 </div>
                 <div class="card_description_minor">
                     <div class="region">
-                        <p>${catalog.get(j).get(3)}</p>
+                        <p><% out.println(a.get(3));%></p>
                     </div>
                     <div class="color">
-                        <p>${catalog.get(j).get(4)}</p>
+                        <p><% out.println(a.get(4));%></p>
                     </div>
                     <div class="alcool">
-                        <p>${catalog.get(j).get(5)}</p>
+                        <p><% out.println(a.get(5));%></p>
                     </div>
                     <div class="garde">
-                        <p>${catalog.get(j).get(6)}</p>
+                        <p><% out.println(a.get(6));%></p>
                     </div>
                     <div class="rating">
-                        <p>${catalog.get(j).get(7)}</p>
+                        <p><% out.println(a.get(7));%></p>
                     </div>
                 </div>
             </div>
