@@ -84,7 +84,7 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
                         <p><% out.println(a.get(4));%></p>
                     </div>
                     <div class="alcool">
-                        <p><% out.println(a.get(5));%> %C</p>
+                        <p><% out.println(a.get(5));%> °C</p>
                     </div>
                     <div class="garde">
                         <p><% out.println(a.get(6));%> ans</p>
@@ -106,7 +106,7 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
             </div>
           
             <div class="card_description">
-              <a href="bottleForm.jsp">
+              <a href="bottleForm.jsp?pseudo=${user.getPseudo()">
                 <div class="card_description_major">
                     <div class="bottle_name">
                         <p>Ajouter une bouteille</p>
@@ -121,7 +121,7 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
   
     
 </div>
-    <div class="section-application">
+    <div class="section-application" id="lacom">
     <h1>La communauté</h1>
     <div class="cards-list users">
         <div class="card-user 1">
