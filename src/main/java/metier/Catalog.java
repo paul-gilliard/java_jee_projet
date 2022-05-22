@@ -1,6 +1,10 @@
 package metier;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import xmlGenerator.generatorCatalogXml;
 
 public class Catalog {
 	private static Catalog instance;
@@ -19,5 +23,7 @@ public class Catalog {
 		bottles.add(bottle);
 		//Cave.addNewBottle(user_id,bottle);
 	}
+	
+
 
 }

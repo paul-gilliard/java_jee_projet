@@ -100,6 +100,15 @@ public class Users {
 		return gen.getOneBottleFromCatalogById(bottleId);
 	}
 	
+	public HashMap<String, List> getAllBottleFromCatalog() {
+		generatorCatalogXml gen = new generatorCatalogXml();
+		return gen.getAllBottleFromCatalog();
+	}
+	
+	public int getTailleCave() {
+		generatorCatalogXml gen = new generatorCatalogXml();
+		return gen.idIncrementedBottle();
+	}
 	
 
 }
