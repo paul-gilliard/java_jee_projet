@@ -51,9 +51,7 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
 <div class="section-application">
     <h1>Ma cave</h1>
     <div class="cards-list wines">
-<% out.println(userBottles.get("c4").get(0)); %>
-<% out.println(user.getBottlesById(userBottles.get("c4").get(0).toString())); %>
- 
+
       
         <div class="card-wine 2">
             <div class="card_image">
