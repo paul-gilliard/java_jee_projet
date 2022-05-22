@@ -67,13 +67,17 @@ public class NewBottle extends HttpServlet {
 		user.setSurname(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(2).toString());
 		user.setPseudo(request.getParameter("pseudo"));
 		user.setPassword(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(3).toString());
-		user.getCave().addNewBottleFromList(user.getId(), bottle);
-		catalog.addNewBottle(user.getId(), bottle);
+		//user.getCave().addNewBottleFromList(user.getId(), bottle);
+		System.out.println("la bouteille : "+bottle);
+		Cave cave = new Cave(Integer.parseInt(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(0).toString()));
+		cave.addNewBottle(Integer.parseInt(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(0).toString()), bottle);
+		catalog.addNewBottle(Integer.parseInt(userxml.getOneUserFromByPseudo(pseudo).get(pseudo).get(0).toString()), bottle);
+		// catalog.addNewBottle(user.getId(), bottle);
 		System.out.println(user.toString());
 		
 		request.setAttribute("user", user);
 		
-		System.out.println(user.getCave().getSize());
+		//System.out.println(user.getCave().getSize());
 		
 		
 		/*int user_id = Integer.parseInt(request.getParameter("user_id"));

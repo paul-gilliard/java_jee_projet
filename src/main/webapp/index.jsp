@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="javax.xml.parsers.DocumentBuilderFactory,
@@ -16,13 +19,18 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
 	rel="stylesheet">
     <title>Ma cave</title>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-    <%@ page import="metier.Users" %>
+    <%@page import="metier.*" %>
+    <%@ page import="xmlGenerator.GenerateCaveXml" %>
     <jsp:useBean id="user" type="metier.Users" scope="request" />
+  <%--   <jsp:useBean id="cave" type="metier.Cave" scope="page" />
+    <jsp:useBean id="bottle" type="metier.Bottle" scope="page" /> 
+    <jsp:useBean id="generatorCaveXml" type="xmlGenerator.GenerateCaveXml" scope="page" />--%>
    
 </head>
 
 <body>
 
+<% HashMap<String,List> userBottles =  user.getBottles();%>
 
 
     <nav class="menu">
@@ -42,7 +50,8 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
 <div class="section-application">
     <h1>Ma cave</h1>
     <div class="cards-list wines">
-
+<% out.println(userBottles.get("c4").get(0)); %>
+<% out.println(user.getBottlesById(userBottles.get("c4").get(0).toString())); %>
  
       
         <div class="card-wine 2">
@@ -53,7 +62,8 @@ javax.xml.parsers.DocumentBuilder,org.w3c.dom.*"
             <div class="card_description">
                 <div class="card_description_major">
                     <div class="bottle_name">
-                        <p>bottle_name</p>
+                    <% out.println(userBottles.get("b4")); %>
+                        <p><%userBottles.get("b"+user.getId()); %></p>
                     </div>
                     <div class="castle">
                         <p>castle</p>
